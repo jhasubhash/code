@@ -5,9 +5,9 @@
     height: 100vh;        /* Viewport-relative units */
     width: 100vw;
     transform: scale(1); 
-    overflow:hidden
+    overflow:hidden;
+    padding:0;
 }
   
 .IframeClass {
-    background:url(../images/logo.svg) center center no-repeat;
 }

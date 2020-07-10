@@ -6,8 +6,9 @@ class CodeView extends React.PureComponent {
      render(){
         let codeId = this.props.pageNum; 
         let gistId = "ab55cb8921d8538dabad8d6d2b16afde";
+        const param1 = "&bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=none&l=c&ds=true&dsyoff=10px&dsblur=18px&fs=14px";
         const param = "&bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=none&l=c&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=200px&ph=72px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false";
-        let src="https://carbon.now.sh/embed/"+gistId+"?filename="+codeId+param;
+        let src="https://carbon.now.sh/embed/"+gistId+"?filename="+codeId+param1;
        
         return (
         <React.Fragment>
@@ -17,7 +18,6 @@ class CodeView extends React.PureComponent {
                 loading="loading..."
                 sandbox="allow-scripts allow-same-origin"
                 className="CodeView"
-                display="initial"
                 position="relative"/>
             </div>
         </React.Fragment>

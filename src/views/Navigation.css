@@ -5,9 +5,10 @@
     height: fit-content;
     position: absolute;
     bottom: 50px;
+    text-align: center;
 }
 
 .NavigationViewInner {
     position: relative;
-    margin-left: 40%
+    display: inline-block;
 }
