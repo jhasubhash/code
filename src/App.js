@@ -8,7 +8,8 @@ class App extends React.PureComponent {
   constructor(props){
     super(props);
 		this.state = {
-			pageNum:0,
+      pageNum:1,
+      pageCount:3,
       width: window.innerWidth,
 		}
   }
@@ -27,6 +28,10 @@ class App extends React.PureComponent {
     this.setState({ width: window.innerWidth });
   };
 
+  onPageCountChange = (count) =>{
+		this.setState({ pageCount: count });
+  }
+
   onPageChange = (e, page)=>{
 		this.setState({ pageNum: page });
   }
@@ -36,8 +41,9 @@ class App extends React.PureComponent {
     const isMobile = width <= 500;
     return (
       <div className="App">
-        <CodeView codeId={this.props.codeId} pageNum={this.state.pageNum}/>
-        { <Navigation onPageChange={this.onPageChange}/>}
+        <CodeView codeId={this.props.codeId} pageNum={this.state.pageNum} 
+                  onPageCountChange = {this.onPageCountChange}/>
+        { <Navigation onPageChange={this.onPageChange} pageCount={this.state.pageCount}/>}
       </div>
     );
   }

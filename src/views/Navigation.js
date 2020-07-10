@@ -18,7 +18,7 @@ export default function Navigation(props) {
   return (
     <div className={classList}>
         <div className="NavigationViewInner">
-        <Pagination count={10} color="primary" onChange={props.onPageChange}/>
+        <Pagination count={props.pageCount} color="primary" onChange={props.onPageChange}/>
         </div>
     </div>
   );
