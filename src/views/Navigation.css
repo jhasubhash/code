@@ -1,0 +1,13 @@
+
+.NavigationView {
+    z-index: 2;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    bottom: 50px;
+}
+
+.NavigationViewInner {
+    position: relative;
+    margin-left: 40%
+}

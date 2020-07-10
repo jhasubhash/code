@@ -1,0 +1,13 @@
+.CodeView {
+    display: block;       /* iframes are inline by default */
+    background: #ABB8C3;
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;
+    transform: scale(1); 
+    overflow:hidden
+}
+  
+.IframeClass {
+    background:url(../images/logo.svg) center center no-repeat;
+}
