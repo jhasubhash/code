@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 
 export default function ListView(props) {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -42,7 +43,12 @@ export default function ListView(props) {
   };
 
   const handleClick = (id) => {
+    setSelectedIndex(id);
     props.onPageChange(parseInt(id));
+  }
+  const handleMenuOpen = (anchor, open, pageNum) => (event) => {
+    setSelectedIndex(pageNum);
+    toggleDrawer(anchor, open)(event)
   }
 
   const list = (anchor) => (
@@ -65,7 +71,7 @@ export default function ListView(props) {
       <Divider />
       <List>
         {props.manifest.map((obj, index) => (
-          <ListItem button key={obj.id} onClick={()=>{handleClick(obj.id)}}>
+          <ListItem button key={obj.id} onClick={()=>{handleClick(obj.id)}} selected={selectedIndex == obj.id}>
             <ListItemIcon>{index % 2 === 0 ? <CodeIcon /> : <CodeIcon />}</ListItemIcon>
             <ListItemText primary={obj.name} />
             <Chip size="small" label={obj.tag} />
@@ -78,7 +84,7 @@ export default function ListView(props) {
   return (
     <div className="ListView">
     <React.Fragment key={anchor}>
-        <IconButton onClick={toggleDrawer(anchor, true)}><MenuIcon/></IconButton>
+        <IconButton onClick={handleMenuOpen(anchor,true,props.pageNum)}><MenuIcon/></IconButton>
         <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
         {list(anchor)}
         </Drawer>

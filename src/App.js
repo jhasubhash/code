@@ -54,7 +54,8 @@ class App extends React.PureComponent {
     return (
       <div className="App">
         <ListView manifest={this.state.manifest}
-                  onPageChange={this.onPageChange}/>
+                  onPageChange={this.onPageChange}
+                  pageNum={this.state.pageNum}/>
         <CodeView pageNum={this.state.pageNum} 
                   onPageCountChange = {this.onPageCountChange}
                   setManifest = {this.setManifest}/>
