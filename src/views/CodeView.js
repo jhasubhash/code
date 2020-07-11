@@ -31,6 +31,7 @@ class CodeView extends React.PureComponent {
                 fileCnt++;
             }
         }
+        this.props.setManifest(obj[0].content);
         this.pageCnt = fileCnt-1;
         this.props.onPageCountChange(this.pageCnt);
     }

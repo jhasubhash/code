@@ -13,13 +13,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navigation(props) {
-  const classes = useStyles();
-  const classList = classes.root+" NavigationView"
-  return (
-    <div className={classList}>
-        <div className="NavigationViewInner">
-        <Pagination count={props.pageCount} color="primary" onChange={props.onPageChange}/>
+    const [page, setPage] = React.useState(1);
+    const classes = useStyles();
+    const classList = classes.root+" NavigationView"
+
+    const handleChange = (event, value) => {
+        setPage(value);
+        props.onPageChange(value);
+    };
+
+    return (
+        <div className={classList}>
+            <div className="NavigationViewInner">
+            <Pagination page={props.pageNum} count={props.pageCount} color="primary" onChange={handleChange}/>
+            </div>
         </div>
-    </div>
-  );
+    );
 }

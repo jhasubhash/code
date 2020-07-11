@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import CodeView from './views/CodeView.js';
 import Navigation from './views/Navigation.js';
-
+import ListView from './views/ListView.js';
 class App extends React.PureComponent { 
 
   constructor(props){
@@ -11,6 +11,7 @@ class App extends React.PureComponent {
       pageNum:1,
       pageCount:3,
       width: window.innerWidth,
+      manifest:[],
 		}
   }
 
@@ -32,8 +33,19 @@ class App extends React.PureComponent {
 		this.setState({ pageCount: count });
   }
 
-  onPageChange = (e, page)=>{
+  onPageChange = (page)=>{
 		this.setState({ pageNum: page });
+  }
+
+  setManifest = (data) => {
+    let obj = JSON.parse(data);
+    let arr = [];
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        arr.push({"id":key,"name":obj[key].name,"tag":obj[key].tag})
+      }
+    }
+    this.setState({ manifest: arr });
   }
 
   render() { 
@@ -41,9 +53,14 @@ class App extends React.PureComponent {
     const isMobile = width <= 500;
     return (
       <div className="App">
-        <CodeView codeId={this.props.codeId} pageNum={this.state.pageNum} 
-                  onPageCountChange = {this.onPageCountChange}/>
-        { <Navigation onPageChange={this.onPageChange} pageCount={this.state.pageCount}/>}
+        <ListView manifest={this.state.manifest}
+                  onPageChange={this.onPageChange}/>
+        <CodeView pageNum={this.state.pageNum} 
+                  onPageCountChange = {this.onPageCountChange}
+                  setManifest = {this.setManifest}/>
+        { <Navigation pageNum={this.state.pageNum}
+                  onPageChange={this.onPageChange} 
+                  pageCount={this.state.pageCount}/>}
       </div>
     );
   }
