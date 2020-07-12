@@ -28,10 +28,10 @@ export default function Navigation(props) {
       const target = ref.current
       if (!target) return
       const disablePinchZoom = (e) => {
-        if (e.touches && e.touches.length > 1) {
+        if (e.touches ) {
           e.preventDefault()
         }
-        if(!e.touches){
+        if(e.ctrlKey){
             e.preventDefault()
         }
       }

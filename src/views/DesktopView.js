@@ -7,7 +7,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 function DeskTopView(prop) {
    return (
-    <TransformWrapper>
+    <TransformWrapper options={{limitToBounds: false, minScale:0.2}}>
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
             <React.Fragment>
             <TransformComponent>
