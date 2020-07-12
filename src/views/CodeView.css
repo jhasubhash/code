@@ -9,5 +9,9 @@
     padding:0;
 }
   
+.IframeClassMobile {
+    pointer-events:none;
+}
+
 .IframeClass {
 }

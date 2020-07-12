@@ -21,9 +21,30 @@ export default function Navigation(props) {
         setPage(value);
         props.onPageChange(value);
     };
+    const ref = React.useRef(null)
+    // const ref = useRef<HTMLDivElement>(null)
+  
+    React.useLayoutEffect(() => {
+      const target = ref.current
+      if (!target) return
+      const disablePinchZoom = (e) => {
+        if (e.touches && e.touches.length > 1) {
+          e.preventDefault()
+        }
+        if(!e.touches){
+            e.preventDefault()
+        }
+      }
+      target.addEventListener("touchmove", disablePinchZoom, { passive: false })
+      target.addEventListener("wheel", disablePinchZoom, { passive: false })
+      return () => {
+        target.removeEventListener("touchmove", disablePinchZoom)
+        target.removeEventListener("wheel", disablePinchZoom)
+      }
+    }, [])
 
     return (
-        <div className={classList}>
+        <div ref={ref} className={classList}>
             <div className="NavigationViewInner">
             <Pagination page={props.pageNum} count={props.pageCount} color="primary" onChange={handleChange}/>
             </div>

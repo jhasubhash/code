@@ -58,7 +58,8 @@ class App extends React.PureComponent {
                   pageNum={this.state.pageNum}/>
         <CodeView pageNum={this.state.pageNum} 
                   onPageCountChange = {this.onPageCountChange}
-                  setManifest = {this.setManifest}/>
+                  setManifest = {this.setManifest}
+                  isMobile = {isMobile}/>
         { <Navigation pageNum={this.state.pageNum}
                   onPageChange={this.onPageChange} 
                   pageCount={this.state.pageCount}/>}
