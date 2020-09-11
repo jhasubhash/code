@@ -56,7 +56,7 @@ class CodeView extends React.PureComponent {
         if(this.codeMap.length <= codeId)
             this.lastSrc = "https://carbon.now.sh/embed/"+this.gistId+"?filename="+codeId+"&"+param1;
         else
-            this.lastSrc = "https://carbon.now.sh/embed/[id]?"+param1+"&code="+this.codeMap[codeId];
+            this.lastSrc = "https://carbon.now.sh/embed?"+param1+"&code="+this.codeMap[codeId];
         return this.lastSrc;
     }
 
